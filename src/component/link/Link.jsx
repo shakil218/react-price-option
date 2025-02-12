@@ -9,6 +9,6 @@ const Link = ({ route }) => {
   );
 };
 Link.propTypes = {
-  route: PropTypes.array,
+  route: PropTypes.object,
 };
 export default Link;

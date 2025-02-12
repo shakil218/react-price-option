@@ -12,8 +12,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navbar flex px-5 bg-emerald-300 items-center justify-between">
-      <div className="navbar-start gap-5">
+    <nav className="navbar flex px-5 bg-emerald-200 items-center justify-between">
+      <div className="navbar-start gap-3">
         <div className="  md:hidden " onClick={() => setOpen(!open)}>
           {open === true ? (
             <AiOutlineClose className="text-2xl"></AiOutlineClose>
@@ -21,23 +21,23 @@ const Navbar = () => {
             <AiOutlineMenu className="text-2xl"></AiOutlineMenu>
           )}
           <div>
-            <ul className={`absolute duration-1000 ${open ? "top-24" : "-top-60"} bg-emerald-100 p-6 rounded-lg`}>
+            <ul className={`absolute duration-1000 ${open ? "top-24" : "-top-60"} bg-emerald-100 p-6 rounded-lg shadow-lg`}>
               {routes.map((route) => (
                 <Link key={route.id} route={route}></Link>
               ))}
             </ul>
           </div>
         </div>
-        <img className="w-24" src="logo.png" alt="" />
+        <img className="w-24 hidden md:flex" src="logo.png" alt="" />
       </div>
       <div className="navbar-center">
-        <ul className="hidden md:flex">
+        <ul className="hidden lg:flex">
           {routes.map((route) => (
             <Link key={route.id} route={route}></Link>
           ))}
         </ul>
       </div>
-      <div className="flex items-center gap-5 navbar-end">
+      <div className="flex items-center gap-3 navbar-end">
         <label className="input input-bordered flex items-center gap-2 rounded-full">
           <input type="text" className="grow" placeholder="Search" />
           <svg
