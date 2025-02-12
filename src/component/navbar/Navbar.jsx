@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Link from "../link/Link";
-
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const routes = [
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "About", path: "/about" },
@@ -10,15 +12,33 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex px-5 bg-emerald-300 items-center justify-between">
-      <img className="w-24" src="logo.png" alt="" />
-      <ul className="md:flex">
-        {routes.map((route) => (
-          <Link key={route.id} route={route}></Link>
-        ))}
-      </ul>
-      <div className="flex items-center gap-5">
-        <label className="input input-bordered flex items-center gap-2">
+    <nav className="navbar flex px-5 bg-emerald-300 items-center justify-between">
+      <div className="navbar-start gap-5">
+        <div className="  md:hidden " onClick={() => setOpen(!open)}>
+          {open === true ? (
+            <AiOutlineClose className="text-2xl"></AiOutlineClose>
+          ) : (
+            <AiOutlineMenu className="text-2xl"></AiOutlineMenu>
+          )}
+          <div>
+            <ul className={`absolute duration-1000 ${open ? "top-24" : "-top-60"} bg-emerald-100 p-6 rounded-lg`}>
+              {routes.map((route) => (
+                <Link key={route.id} route={route}></Link>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <img className="w-24" src="logo.png" alt="" />
+      </div>
+      <div className="navbar-center">
+        <ul className="hidden md:flex">
+          {routes.map((route) => (
+            <Link key={route.id} route={route}></Link>
+          ))}
+        </ul>
+      </div>
+      <div className="flex items-center gap-5 navbar-end">
+        <label className="input input-bordered flex items-center gap-2 rounded-full">
           <input type="text" className="grow" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +59,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

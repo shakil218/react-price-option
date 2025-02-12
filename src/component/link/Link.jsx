@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
-const Link = ({route}) => {
+
+const Link = ({ route }) => {
   return (
-    <li className=" mr-6">
-        <a href={route.path}>{route.name}</a>
-      </li>
+    
+    <li className=" mr-6 hover:bg-emerald-300 p-1 px-5">
+      <a href={route.path}>{route.name}</a>
+    </li>
   );
 };
-Link.propTypes={
+Link.propTypes = {
   route: PropTypes.array,
-}
+};
 export default Link;
